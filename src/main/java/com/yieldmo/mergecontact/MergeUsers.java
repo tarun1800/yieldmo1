@@ -29,6 +29,12 @@ public class MergeUsers {
 
         phFilter.forEach((x,y)->System.out.println("Phone : " + x + ' ' + "Name :" + ' ' + y.keySet().stream().collect(Collectors.toList()) + ' '+ "email :" + ' ' + y.values().stream().collect(Collectors.toList())));
 
+
+        Map<String,Map<String,String>> emFilter = filterEmail(contactLists);
+
+        emFilter.forEach((x,y)->System.out.println("Email : " + x + ' ' + "Name :" + ' ' + y.keySet().stream().collect(Collectors.toList()) + ' '+ "Phone :" + ' ' + y.values().stream().collect(Collectors.toList())));
+
+
     }
 
 
@@ -42,6 +48,23 @@ public class MergeUsers {
 
 
         Map<String,Map<String,String>> map = contacts.stream().collect(Collectors.groupingBy(Contact::getPhone,Collectors.toMap(x->x.getName(),x->x.getEmail())));
+
+
+        map.values().stream().collect(Collectors.toList());
+        return map;
+    }
+
+
+    public   static  Map<String,Map<String,String>> filterEmail(List<Contact> contacts) {
+
+        Map<String,String>  email = contacts.stream().collect(Collectors.toMap(x->x.getName(),x->x.getPhone(),(oldValue,newValue) -> oldValue));
+        //  System.out.println(phone);
+
+        //  phone.forEach((x,y) -> System.out.println( "Key :" + x + ' ' + "Value:" + ' ' +y));
+
+
+
+        Map<String,Map<String,String>> map = contacts.stream().collect(Collectors.groupingBy(Contact::getEmail,Collectors.toMap(x->x.getName(),x->x.getPhone())));
 
 
         map.values().stream().collect(Collectors.toList());
