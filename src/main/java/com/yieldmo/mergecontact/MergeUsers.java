@@ -1,13 +1,11 @@
 package com.yieldmo.mergecontact;
 
-import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 import com.yieldmo.common.Contact;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.lang.Object.*;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
+
 
 
 public class MergeUsers {
@@ -41,9 +39,6 @@ public class MergeUsers {
     public   static  Map<String,Map<String,String>> filterPhone(List<Contact> contacts) {
 
         Map<String,String>  phone = contacts.stream().collect(Collectors.toMap(x->x.getName(),x->x.getEmail(),(oldValue,newValue) -> oldValue));
-      //  System.out.println(phone);
-
-      //  phone.forEach((x,y) -> System.out.println( "Key :" + x + ' ' + "Value:" + ' ' +y));
 
 
 
@@ -58,9 +53,6 @@ public class MergeUsers {
     public   static  Map<String,Map<String,String>> filterEmail(List<Contact> contacts) {
 
         Map<String,String>  email = contacts.stream().collect(Collectors.toMap(x->x.getName(),x->x.getPhone(),(oldValue,newValue) -> oldValue));
-        //  System.out.println(phone);
-
-        //  phone.forEach((x,y) -> System.out.println( "Key :" + x + ' ' + "Value:" + ' ' +y));
 
 
 
