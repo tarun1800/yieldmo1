@@ -1,0 +1,12 @@
+SQL-Answer-1 :
+
+a)   select u.user_id, u.full_name,s.subscription_startdate,s.subscription_enddate from user u, subscription s where 
+              u.user_id = s.user_id
+                  and s.subscription_startdate >= TO_TIMESTAMP('2018-10-01','YYYY-MM-DD') 
+                  and s.subscription_enddate < TO_TIMESTAMP('2018-12-31','YYYY-MM-DD');
+                  
+SQL-Answer-2 :
+
+b)   select u.user_id,u.full_name,l.event_time,l.event_type from user u, login_event l  
+     where l.event_time between TO_TIMESTAMP('01/02/2019 09:15:00','DD/MM/YYYY HH24:MI:SS') at time_zone 'UTC' and 
+                           TO_TIMESTAMP('01/02/2019 10:15:00','DD/MM/YYYY HH24:MI:SS') at time_zone 'UTC';
